@@ -4,6 +4,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //set state is an asynchronous function
       term: ""
     };
     this.handleSearch = this.handleSearch.bind(this);

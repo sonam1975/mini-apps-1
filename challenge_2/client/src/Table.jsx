@@ -29,7 +29,14 @@ class Table extends React.Component {
           </tr>
           {this.props.csvReport
             .filter(x => {
-              return x.firstname.toLowerCase().includes(term.toLowerCase());
+              return (
+                x.firstname.toLowerCase().includes(term.toLowerCase()) ||
+                x.lastname.toLowerCase().includes(term.toLowerCase()) ||
+                x.county.toLowerCase().includes(term.toLowerCase()) ||
+                x.city.toLowerCase().includes(term.toLowerCase()) ||
+                x.role.toLowerCase().includes(term.toLowerCase()) ||
+                x.sales.toLowerCase().includes(term.toLowerCase())
+              );
             })
             .map((info, i) => (
               <Tablelist key={i} info={info} />
