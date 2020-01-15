@@ -4,16 +4,17 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      county: "",
-      city: "",
-      roles: "",
-      sales: ""
+      term: ""
     };
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch() {}
+  handleSearch(event) {
+    event.preventDefault();
+    this.setState({ term: event.target.value }, () => {
+      this.props.searchFor(this.state.term);
+    });
+  }
 
   render() {
     return (
@@ -22,10 +23,10 @@ class Form extends React.Component {
           id="search"
           type="text"
           name="name"
-          value=""
-          placeholder="Search..."
+          placeholder="🔎Search..."
           size="100"
           onChange={this.handleSearch}
+          value={this.state.term}
         ></input>
       </form>
     );
